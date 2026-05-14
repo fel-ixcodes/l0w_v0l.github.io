@@ -1,60 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>l0w_v0!ume</title>
-
-<link
-id="favicon"
-rel="icon"
-href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50a.png"
->
-
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
-rel="stylesheet"
->
-
-</head>
-<body>
-
-<canvas id="rain"></canvas>
-
-<div class="container">
-
-    <h1 class="logo">l0w_v0!ume</h1>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search DuckDuckGo..."
-            autocomplete="off"
-        >
-
-        <button onclick="searchWeb()">
-            Search
-        </button>
-
-    </div>
-
-    <button class="settings-btn" onclick="toggleSettings()">
-        Settings
-    </button>
-
-    <div class="bottom-text">
-        Minimal. Calm. Fast.
-    </div>
-
-</div>
-
 <!-- SETTINGS PANEL -->
 
 <div class="settings-panel" id="settingsPanel">
@@ -69,54 +12,123 @@ rel="stylesheet"
 
     </div>
 
-    <div class="setting">
+    <!-- TAB CLOAK -->
 
-        <label>Tab Title</label>
+    <div class="module">
 
-        <input
-            type="text"
-            id="tabTitle"
-            placeholder="Google Classroom"
+        <button
+            class="module-header"
+            onclick="toggleDropdown('cloakDropdown')"
         >
 
+            <span>Tab Cloak</span>
+
+            <span class="dropdown-arrow">⌄</span>
+
+        </button>
+
+        <div
+            class="module-dropdown"
+            id="cloakDropdown"
+        >
+
+            <div class="setting">
+
+                <label>Tab Title</label>
+
+                <input
+                    type="text"
+                    id="tabTitle"
+                    placeholder="Google Classroom"
+                >
+
+            </div>
+
+            <div class="setting">
+
+                <label>Tab Icon</label>
+
+                <select id="tabIcon">
+
+                    <option value="classroom">
+                        Google Classroom
+                    </option>
+
+                    <option value="google">
+                        Google
+                    </option>
+
+                    <option value="drive">
+                        Google Drive
+                    </option>
+
+                    <option value="docs">
+                        Google Docs
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="setting">
+    <!-- BACKGROUND EFFECTS -->
 
-        <label>Tab Icon</label>
+    <div class="module">
 
-        <select id="tabIcon">
+        <button
+            class="module-header"
+            onclick="toggleDropdown('effectsDropdown')"
+        >
 
-            <option value="classroom">Google Classroom</option>
-            <option value="google">Google</option>
-            <option value="drive">Google Drive</option>
-            <option value="docs">Google Docs</option>
+            <span>Background Effects</span>
 
-        </select>
+            <span class="dropdown-arrow">⌄</span>
+
+        </button>
+
+        <div
+            class="module-dropdown"
+            id="effectsDropdown"
+        >
+
+            <div class="setting">
+
+                <label>Effects Mode</label>
+
+                <select id="effectMode">
+
+                    <option value="rain">
+                        Rain
+                    </option>
+
+                    <option value="particles">
+                        Particles
+                    </option>
+
+                    <option value="off">
+                        Off
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="setting">
+    <!-- APPLY -->
 
-        <label>Background Effects</label>
+    <button
+        class="apply-btn"
+        onclick="applySettings()"
+    >
 
-        <select id="effectMode">
+        Apply Settings
 
-            <option value="rain">Rain</option>
-            <option value="particles">Particles</option>
-            <option value="off">Off</option>
-
-        </select>
-
-    </div>
-
-    <button class="apply-btn" onclick="applySettings()">
-        Apply
     </button>
 
 </div>
-
-<script src="./script.js"></script>
-
-</body>
-</html>
