@@ -22,7 +22,7 @@ body{
         #080808 100%);
 }
 
-/* BACKGROUND */
+/* CANVAS */
 
 #rain{
 
@@ -37,7 +37,7 @@ body{
     z-index:-1;
 }
 
-/* MAIN */
+/* MAIN CONTAINER */
 
 .container{
 
@@ -73,7 +73,8 @@ body{
         0 0 10px rgba(255,255,255,0.5),
         0 0 20px rgba(255,255,255,0.2);
 
-    animation:glow 4s ease-in-out infinite alternate;
+    animation:
+        glow 4s ease-in-out infinite alternate;
 }
 
 @keyframes glow{
@@ -108,9 +109,11 @@ body{
 
     gap:12px;
 
-    background:rgba(255,255,255,0.08);
+    background:
+        rgba(255,255,255,0.08);
 
-    border:1px solid rgba(255,255,255,0.15);
+    border:
+        1px solid rgba(255,255,255,0.15);
 
     border-radius:999px;
 
@@ -139,7 +142,9 @@ body{
 }
 
 .search-box input::placeholder{
-    color:rgba(255,255,255,0.55);
+
+    color:
+        rgba(255,255,255,0.55);
 }
 
 .search-box button{
@@ -176,7 +181,7 @@ body{
         0 0 20px rgba(255,255,255,0.25);
 }
 
-/* SETTINGS BUTTON */
+/* BUTTONS */
 
 .settings-btn,
 .apply-btn{
@@ -188,7 +193,8 @@ body{
     background:
         rgba(255,255,255,0.08);
 
-    border:1px solid rgba(255,255,255,0.12);
+    border:
+        1px solid rgba(255,255,255,0.12);
 
     color:white;
 
@@ -214,7 +220,8 @@ body{
 
     margin-top:25px;
 
-    color:rgba(255,255,255,0.55);
+    color:
+        rgba(255,255,255,0.55);
 
     font-size:15px;
 }
@@ -232,20 +239,20 @@ body{
         translate(-50%, -50%)
         scale(0.9);
 
-    width:400px;
-    max-width:90%;
+    width:420px;
+    max-width:92%;
 
     background:
-        rgba(20,20,20,0.95);
+        rgba(20,20,20,0.96);
 
     border:
         1px solid rgba(255,255,255,0.12);
 
-    border-radius:20px;
+    border-radius:24px;
 
-    padding:25px;
+    padding:24px;
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(16px);
 
     z-index:1000;
 
@@ -279,14 +286,21 @@ body{
     margin-bottom:20px;
 }
 
+.settings-header h2{
+
+    font-size:26px;
+}
+
+/* CLOSE BUTTON */
+
 .close-btn{
 
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:12px;
 
     background:
         rgba(255,255,255,0.08);
@@ -308,31 +322,13 @@ body{
     transform:scale(1.05);
 }
 
-/* SETTINGS */
-
-.setting{
-    margin-bottom:18px;
-}
-
-.setting label{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    color:rgba(255,255,255,0.7);
-}
-
-.setting input,
-.setting select{
-
 /* MODULES */
 
 .module{
 
     margin-bottom:18px;
 
-    border-radius:16px;
+    border-radius:18px;
 
     overflow:hidden;
 
@@ -376,7 +372,7 @@ body{
         rgba(255,255,255,0.05);
 }
 
-/* DROPDOWN */
+/* DROPDOWNS */
 
 .module-dropdown{
 
@@ -391,8 +387,6 @@ body{
     padding:
         0 18px;
 }
-
-/* ACTIVE DROPDOWN */
 
 .module-dropdown.active{
 
@@ -413,6 +407,43 @@ body{
 .module-header.active .dropdown-arrow{
 
     transform:rotate(180deg);
+}
+
+/* SETTINGS */
+
+.setting{
+
+    margin-bottom:18px;
+}
+
+.setting label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:
+        rgba(255,255,255,0.7);
+}
+
+.setting input,
+.setting select{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:15px;
 }
 
 /* MOBILE */
