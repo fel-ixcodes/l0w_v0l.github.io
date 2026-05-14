@@ -33,19 +33,27 @@ document
 
 /* SETTINGS PANEL */
 
+function toggleSettings(){
+
+    const panel =
+        document.getElementById("settingsPanel");
+
+    panel.classList.toggle("active");
+
+}
+
+window.toggleSettings = toggleSettings;
+
 /* DROPDOWNS */
 
-function toggleDropdown(id){
+function toggleDropdown(id, button){
 
     const dropdown =
         document.getElementById(id);
 
-    const header =
-        dropdown.previousElementSibling;
-
     dropdown.classList.toggle("active");
 
-    header.classList.toggle("active");
+    button.classList.toggle("active");
 
 }
 
@@ -66,13 +74,9 @@ function applySettings(){
 
     effectMode = selectedEffect;
 
-    /* TITLE */
-
     if(title){
         document.title = title;
     }
-
-    /* FAVICON */
 
     const favicon =
         document.getElementById("favicon");
@@ -200,7 +204,7 @@ function createParticles(){
 createRain();
 createParticles();
 
-/* ANIMATION */
+/* ANIMATE */
 
 function animate(){
 
@@ -289,8 +293,6 @@ function animate(){
     requestAnimationFrame(animate);
 
 }
-
-/* START */
 
 animate();
 
