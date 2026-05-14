@@ -33,16 +33,23 @@ document
 
 /* SETTINGS PANEL */
 
-function toggleSettings(){
+/* DROPDOWNS */
 
-    const panel =
-        document.getElementById("settingsPanel");
+function toggleDropdown(id){
 
-    panel.classList.toggle("active");
+    const dropdown =
+        document.getElementById(id);
+
+    const header =
+        dropdown.previousElementSibling;
+
+    dropdown.classList.toggle("active");
+
+    header.classList.toggle("active");
 
 }
 
-window.toggleSettings = toggleSettings;
+window.toggleDropdown = toggleDropdown;
 
 /* APPLY SETTINGS */
 
