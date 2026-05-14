@@ -1,4 +1,147 @@
 *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    overflow:hidden;
+
+    font-family:'Inter',sans-serif;
+
+    height:100vh;
+
+    color:white;
+
+    background:
+        radial-gradient(circle at top,
+        #3d3d3d 0%,
+        #1f1f1f 35%,
+        #111111 70%,
+        #080808 100%);
+}
+
+/* BACKGROUND */
+
+#rain{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:-1;
+}
+
+/* MAIN */
+
+.container{
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+/* LOGO */
+
+.logo{
+
+    font-size:90px;
+
+    font-weight:800;
+
+    letter-spacing:6px;
+
+    margin-bottom:35px;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.5),
+        0 0 20px rgba(255,255,255,0.2);
+
+    animation:glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+
+    from{
+
+        text-shadow:
+            0 0 10px rgba(255,255,255,0.5),
+            0 0 20px rgba(255,255,255,0.2);
+
+    }
+
+    to{
+
+        text-shadow:
+            0 0 20px rgba(255,255,255,0.8),
+            0 0 40px rgba(255,255,255,0.4);
+
+    }
+
+}
+
+/* SEARCH */
+
+.search-box{
+
+    width:720px;
+    max-width:95%;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    border-radius:999px;
+
+    padding:10px;
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,0.05);
+}
+
+.search-box input{
+
+    flex:1;
+
+    background:transparent;
+
+    border:none;
+    outline:none;
+
+    color:white;
+
+    font-size:18px;
+
+    padding:15px 20px;
+}
+
+.search-box input::placeholder{
+    color:rgba(255,255,255,0.55);
+}
+
 .search-box button{
 
     border:none;
@@ -8,11 +151,12 @@
 
     border-radius:999px;
 
-    background:linear-gradient(
-        135deg,
-        #d9d9d9,
-        #8e8e8e
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #d9d9d9,
+            #8e8e8e
+        );
 
     color:#111;
 
@@ -20,13 +164,29 @@
     font-weight:700;
 
     cursor:pointer;
+
+    transition:0.25s ease;
 }
 
-.settings-btn{
+.search-box button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.25);
+}
+
+/* SETTINGS BUTTON */
+
+.settings-btn,
+.apply-btn{
 
     margin-top:25px;
 
-    background:rgba(255,255,255,0.08);
+    border:none;
+
+    background:
+        rgba(255,255,255,0.08);
 
     border:1px solid rgba(255,255,255,0.12);
 
@@ -37,7 +197,29 @@
     border-radius:14px;
 
     cursor:pointer;
+
+    transition:0.25s ease;
 }
+
+.settings-btn:hover,
+.apply-btn:hover{
+
+    background:
+        rgba(255,255,255,0.14);
+}
+
+/* FOOTER */
+
+.bottom-text{
+
+    margin-top:25px;
+
+    color:rgba(255,255,255,0.55);
+
+    font-size:15px;
+}
+
+/* SETTINGS PANEL */
 
 .settings-panel{
 
@@ -53,9 +235,11 @@
     width:400px;
     max-width:90%;
 
-    background:rgba(20,20,20,0.95);
+    background:
+        rgba(20,20,20,0.95);
 
-    border:1px solid rgba(255,255,255,0.12);
+    border:
+        1px solid rgba(255,255,255,0.12);
 
     border-radius:20px;
 
@@ -70,8 +254,7 @@
 
     transition:
         opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s;
+        transform 0.25s ease;
 }
 
 .settings-panel.active{
@@ -82,5 +265,99 @@
     transform:
         translate(-50%, -50%)
         scale(1);
+}
+
+/* SETTINGS HEADER */
+
+.settings-header{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:20px;
+}
+
+.close-btn{
+
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:0.25s ease;
+}
+
+.close-btn:hover{
+
+    background:
+        rgba(255,255,255,0.16);
+
+    transform:scale(1.05);
+}
+
+/* SETTINGS */
+
+.setting{
+    margin-bottom:18px;
+}
+
+.setting label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:rgba(255,255,255,0.7);
+}
+
+.setting input,
+.setting select{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+    outline:none;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .logo{
+
+        font-size:58px;
+
+        letter-spacing:3px;
+    }
+
+    .search-box{
+        width:95%;
+    }
+
+    .search-box input{
+        font-size:16px;
+    }
 
 }
