@@ -10,13 +10,15 @@
 <link
 id="favicon"
 rel="icon"
-href="favicon.ico"
+href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50a.png"
 >
 
 <link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+rel="stylesheet"
+>
 
 </head>
 <body>
@@ -52,6 +54,8 @@ href="favicon.ico"
 
 </div>
 
+<!-- SETTINGS PANEL -->
+
 <div class="settings-panel" id="settingsPanel">
 
     <div class="settings-header">
@@ -82,4 +86,36 @@ href="favicon.ico"
 
         <select id="tabIcon">
 
+            <option value="classroom">Google Classroom</option>
+            <option value="google">Google</option>
+            <option value="drive">Google Drive</option>
+            <option value="docs">Google Docs</option>
+
+        </select>
+
+    </div>
+
+    <div class="setting">
+
+        <label>Background Effects</label>
+
+        <select id="effectMode">
+
+            <option value="rain">Rain</option>
+            <option value="particles">Particles</option>
+            <option value="off">Off</option>
+
+        </select>
+
+    </div>
+
+    <button class="apply-btn" onclick="applySettings()">
+        Apply
+    </button>
+
+</div>
+
+<script src="./script.js"></script>
+
+</body>
 </html>
