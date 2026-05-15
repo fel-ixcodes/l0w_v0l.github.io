@@ -18,15 +18,23 @@ function searchWeb(){
     const homeBtn =
         document.getElementById("homeBtn");
 
+    /* SHOW BROWSER */
+
     homepage.style.display = "none";
 
     browser.style.display = "block";
 
     homeBtn.style.display = "block";
 
+    /* LOAD EMBEDDABLE PAGE */
+
     browser.src =
-        "https://duckduckgo.com/?q=" +
-        encodeURIComponent(query);
+        "https://example.com";
+
+    /* OPTIONAL TAB TITLE UPDATE */
+
+    document.title =
+        query + " - l0w_v0!ume";
 
 }
 
@@ -52,6 +60,8 @@ function goHome(){
     homepage.style.display = "flex";
 
     homeBtn.style.display = "none";
+
+    document.title = "l0w_v0!ume";
 
 }
 
@@ -112,9 +122,15 @@ function applySettings(){
 
     effectMode = selectedEffect;
 
+    /* TAB TITLE */
+
     if(title){
+
         document.title = title;
+
     }
+
+    /* TAB ICON */
 
     const favicon =
         document.getElementById("favicon");
@@ -159,6 +175,8 @@ const canvas =
 const ctx =
     canvas.getContext("2d");
 
+/* RESIZE */
+
 function resizeCanvas(){
 
     canvas.width =
@@ -171,7 +189,7 @@ function resizeCanvas(){
 
 resizeCanvas();
 
-/* EFFECTS */
+/* EFFECT MODES */
 
 let effectMode = "rain";
 
@@ -188,9 +206,11 @@ function createRain(){
 
         rainDrops.push({
 
-            x: Math.random() * canvas.width,
+            x:
+                Math.random() * canvas.width,
 
-            y: Math.random() * canvas.height,
+            y:
+                Math.random() * canvas.height,
 
             length:
                 Math.random() * 20 + 5,
@@ -217,9 +237,11 @@ function createParticles(){
 
         particles.push({
 
-            x: Math.random() * canvas.width,
+            x:
+                Math.random() * canvas.width,
 
-            y: Math.random() * canvas.height,
+            y:
+                Math.random() * canvas.height,
 
             radius:
                 Math.random() * 3 + 1,
@@ -242,7 +264,7 @@ function createParticles(){
 createRain();
 createParticles();
 
-/* ANIMATE */
+/* ANIMATION LOOP */
 
 function animate(){
 
@@ -253,6 +275,8 @@ function animate(){
         canvas.height
     );
 
+    /* RAIN */
+
     if(effectMode === "rain"){
 
         for(let i = 0; i < rainDrops.length; i++){
@@ -261,7 +285,10 @@ function animate(){
 
             ctx.beginPath();
 
-            ctx.moveTo(drop.x, drop.y);
+            ctx.moveTo(
+                drop.x,
+                drop.y
+            );
 
             ctx.lineTo(
                 drop.x,
@@ -290,6 +317,8 @@ function animate(){
 
     }
 
+    /* PARTICLES */
+
     else if(effectMode === "particles"){
 
         for(let i = 0; i < particles.length; i++){
@@ -314,11 +343,29 @@ function animate(){
             p.x += p.speedX;
             p.y += p.speedY;
 
-            if(p.x < 0) p.x = canvas.width;
-            if(p.x > canvas.width) p.x = 0;
+            if(p.x < 0){
 
-            if(p.y < 0) p.y = canvas.height;
-            if(p.y > canvas.height) p.y = 0;
+                p.x = canvas.width;
+
+            }
+
+            if(p.x > canvas.width){
+
+                p.x = 0;
+
+            }
+
+            if(p.y < 0){
+
+                p.y = canvas.height;
+
+            }
+
+            if(p.y > canvas.height){
+
+                p.y = 0;
+
+            }
 
         }
 
@@ -330,13 +377,14 @@ function animate(){
 
 animate();
 
-/* RESIZE */
+/* WINDOW RESIZE */
 
 window.addEventListener("resize", () => {
 
     resizeCanvas();
 
     createRain();
+
     createParticles();
 
 });
