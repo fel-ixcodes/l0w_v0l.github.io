@@ -37,7 +37,7 @@ body{
     z-index:-1;
 }
 
-/* MAIN CONTAINER */
+/* HOMEPAGE */
 
 .container{
 
@@ -214,6 +214,43 @@ body{
         rgba(255,255,255,0.14);
 }
 
+/* HOME BUTTON */
+
+#homeBtn{
+
+    position:fixed;
+
+    top:20px;
+    left:20px;
+
+    z-index:15;
+
+    display:none;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+        rgba(20,20,20,0.8);
+
+    color:white;
+
+    backdrop-filter:blur(10px);
+
+    cursor:pointer;
+
+    transition:0.25s ease;
+}
+
+#homeBtn:hover{
+
+    background:
+        rgba(40,40,40,0.9);
+}
+
 /* FOOTER */
 
 .bottom-text{
@@ -224,6 +261,27 @@ body{
         rgba(255,255,255,0.55);
 
     font-size:15px;
+}
+
+/* EMBEDDED BROWSER */
+
+#browserFrame{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    border:none;
+
+    display:none;
+
+    background:white;
+
+    z-index:5;
 }
 
 /* SETTINGS PANEL */
@@ -286,11 +344,6 @@ body{
     margin-bottom:20px;
 }
 
-.settings-header h2{
-
-    font-size:26px;
-}
-
 /* CLOSE BUTTON */
 
 .close-btn{
@@ -310,16 +363,6 @@ body{
     font-size:18px;
 
     cursor:pointer;
-
-    transition:0.25s ease;
-}
-
-.close-btn:hover{
-
-    background:
-        rgba(255,255,255,0.16);
-
-    transform:scale(1.05);
 }
 
 /* MODULES */
@@ -338,8 +381,6 @@ body{
     border:
         1px solid rgba(255,255,255,0.08);
 }
-
-/* MODULE HEADER */
 
 .module-header{
 
@@ -362,17 +403,7 @@ body{
     font-weight:600;
 
     cursor:pointer;
-
-    transition:0.25s ease;
 }
-
-.module-header:hover{
-
-    background:
-        rgba(255,255,255,0.05);
-}
-
-/* DROPDOWNS */
 
 .module-dropdown{
 
@@ -442,8 +473,6 @@ body{
         rgba(255,255,255,0.08);
 
     color:white;
-
-    font-size:15px;
 }
 
 /* MOBILE */
@@ -459,10 +488,6 @@ body{
 
     .search-box{
         width:95%;
-    }
-
-    .search-box input{
-        font-size:16px;
     }
 
 }
