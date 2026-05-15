@@ -1,5 +1,16 @@
 window.onload = () => {
 
+/* INTRO */
+
+setTimeout(() => {
+
+    const intro =
+        document.getElementById("introScreen");
+
+    intro.classList.add("hide");
+
+}, 3200);
+
 /* SEARCH */
 
 function searchWeb(){
@@ -18,23 +29,70 @@ function searchWeb(){
     const homeBtn =
         document.getElementById("homeBtn");
 
-    /* SHOW BROWSER */
-
     homepage.style.display = "none";
 
     browser.style.display = "block";
 
     homeBtn.style.display = "block";
 
-    /* LOAD EMBEDDABLE PAGE */
+    /* INTERNAL TEST PAGE */
 
     browser.src =
-        "https://example.com";
+        "data:text/html;charset=utf-8," +
+        encodeURIComponent(`
+            <html>
+            <head>
 
-    /* OPTIONAL TAB TITLE UPDATE */
+            <title>${query}</title>
 
-    document.title =
-        query + " - l0w_v0!ume";
+            <style>
+
+            body{
+
+                background:#111;
+                color:white;
+
+                font-family:Inter,sans-serif;
+
+                display:flex;
+
+                align-items:center;
+                justify-content:center;
+
+                flex-direction:column;
+
+                height:100vh;
+
+                margin:0;
+            }
+
+            h1{
+
+                font-size:52px;
+            }
+
+            p{
+
+                opacity:0.7;
+
+                font-size:18px;
+            }
+
+            </style>
+
+            </head>
+
+            <body>
+
+                <h1>${query}</h1>
+
+                <p>
+                    Embedded browser system working.
+                </p>
+
+            </body>
+            </html>
+        `);
 
 }
 
@@ -61,8 +119,6 @@ function goHome(){
 
     homeBtn.style.display = "none";
 
-    document.title = "l0w_v0!ume";
-
 }
 
 window.goHome = goHome;
@@ -74,12 +130,14 @@ document
 .addEventListener("keypress", function(e){
 
     if(e.key === "Enter"){
+
         searchWeb();
+
     }
 
 });
 
-/* SETTINGS PANEL */
+/* SETTINGS */
 
 function toggleSettings(){
 
@@ -122,15 +180,11 @@ function applySettings(){
 
     effectMode = selectedEffect;
 
-    /* TAB TITLE */
-
     if(title){
 
         document.title = title;
 
     }
-
-    /* TAB ICON */
 
     const favicon =
         document.getElementById("favicon");
@@ -175,8 +229,6 @@ const canvas =
 const ctx =
     canvas.getContext("2d");
 
-/* RESIZE */
-
 function resizeCanvas(){
 
     canvas.width =
@@ -189,7 +241,7 @@ function resizeCanvas(){
 
 resizeCanvas();
 
-/* EFFECT MODES */
+/* EFFECTS */
 
 let effectMode = "rain";
 
@@ -261,10 +313,17 @@ function createParticles(){
 
 }
 
-createRain();
-createParticles();
+/* DELAYED EFFECT START */
 
-/* ANIMATION LOOP */
+setTimeout(() => {
+
+    createRain();
+
+    createParticles();
+
+}, 1800);
+
+/* ANIMATION */
 
 function animate(){
 
@@ -274,8 +333,6 @@ function animate(){
         canvas.width,
         canvas.height
     );
-
-    /* RAIN */
 
     if(effectMode === "rain"){
 
@@ -316,8 +373,6 @@ function animate(){
         }
 
     }
-
-    /* PARTICLES */
 
     else if(effectMode === "particles"){
 
@@ -377,7 +432,7 @@ function animate(){
 
 animate();
 
-/* WINDOW RESIZE */
+/* RESIZE */
 
 window.addEventListener("resize", () => {
 
