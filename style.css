@@ -22,6 +22,123 @@ body{
         #080808 100%);
 }
 
+/* INTRO SCREEN */
+
+#introScreen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:#050505;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:99999;
+
+    overflow:hidden;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+#introScreen.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+}
+
+/* INTRO LOGO */
+
+#introLogo{
+
+    font-size:110px;
+
+    font-weight:800;
+
+    letter-spacing:8px;
+
+    color:white;
+
+    opacity:0;
+
+    transform:
+        scale(0.8);
+
+    animation:
+        introReveal 3.2s ease forwards,
+        introGlow 2s ease-in-out infinite alternate;
+}
+
+/* INTRO REVEAL */
+
+@keyframes introReveal{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            scale(0.7);
+
+        filter:blur(14px);
+    }
+
+    35%{
+
+        opacity:1;
+
+        transform:
+            scale(1.05);
+
+        filter:blur(0px);
+    }
+
+    60%{
+
+        transform:
+            scale(1);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            scale(1);
+    }
+
+}
+
+/* INTRO GLOW */
+
+@keyframes introGlow{
+
+    from{
+
+        text-shadow:
+            0 0 12px rgba(255,255,255,0.35),
+            0 0 25px rgba(255,255,255,0.15);
+    }
+
+    to{
+
+        text-shadow:
+            0 0 24px rgba(255,255,255,0.75),
+            0 0 45px rgba(255,255,255,0.3);
+    }
+
+}
+
 /* CANVAS */
 
 #rain{
@@ -53,6 +170,35 @@ body{
     text-align:center;
 
     padding:20px;
+
+    opacity:0;
+
+    animation:
+        homepageFade 1.2s ease forwards;
+
+    animation-delay:3.1s;
+}
+
+/* HOMEPAGE FADE */
+
+@keyframes homepageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0px);
+    }
+
 }
 
 /* LOGO */
@@ -241,14 +387,6 @@ body{
     backdrop-filter:blur(10px);
 
     cursor:pointer;
-
-    transition:0.25s ease;
-}
-
-#homeBtn:hover{
-
-    background:
-        rgba(40,40,40,0.9);
 }
 
 /* FOOTER */
@@ -427,8 +565,6 @@ body{
         10px 18px 18px 18px;
 }
 
-/* ARROW */
-
 .dropdown-arrow{
 
     transition:
@@ -478,6 +614,13 @@ body{
 /* MOBILE */
 
 @media(max-width:768px){
+
+    #introLogo{
+
+        font-size:62px;
+
+        letter-spacing:3px;
+    }
 
     .logo{
 
