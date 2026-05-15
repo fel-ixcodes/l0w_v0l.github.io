@@ -10,7 +10,7 @@
 <link
 id="favicon"
 rel="icon"
-href="favicon.ico"
+href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50a.png"
 >
 
 <link rel="stylesheet" href="./style.css">
@@ -23,9 +23,24 @@ rel="stylesheet"
 </head>
 <body>
 
+<!-- CANVAS -->
+
 <canvas id="rain"></canvas>
 
-<div class="container">
+<!-- HOME BUTTON -->
+
+<button
+    id="homeBtn"
+    onclick="goHome()"
+>
+
+    Home
+
+</button>
+
+<!-- HOMEPAGE -->
+
+<div class="container" id="homepage">
 
     <h1 class="logo">l0w_v0!ume</h1>
 
@@ -44,8 +59,13 @@ rel="stylesheet"
 
     </div>
 
-    <button class="settings-btn" onclick="toggleSettings()">
+    <button
+        class="settings-btn"
+        onclick="toggleSettings()"
+    >
+
         Settings
+
     </button>
 
     <div class="bottom-text">
@@ -53,6 +73,13 @@ rel="stylesheet"
     </div>
 
 </div>
+
+<!-- EMBEDDED BROWSER -->
+
+<iframe
+    id="browserFrame"
+    src=""
+></iframe>
 
 <!-- SETTINGS PANEL -->
 
@@ -73,7 +100,7 @@ rel="stylesheet"
 
     </div>
 
-    <!-- TAB CLOAK MODULE -->
+    <!-- TAB CLOAK -->
 
     <div class="module">
 
@@ -137,7 +164,7 @@ rel="stylesheet"
 
     </div>
 
-    <!-- EFFECTS MODULE -->
+    <!-- BACKGROUND EFFECTS -->
 
     <div class="module">
 
@@ -184,6 +211,8 @@ rel="stylesheet"
         </div>
 
     </div>
+
+    <!-- APPLY -->
 
     <button
         class="apply-btn"
