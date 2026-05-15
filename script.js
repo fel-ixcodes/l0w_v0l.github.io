@@ -9,15 +9,53 @@ function searchWeb(){
 
     if(!query) return;
 
-    const url =
+    const browser =
+        document.getElementById("browserFrame");
+
+    const homepage =
+        document.getElementById("homepage");
+
+    const homeBtn =
+        document.getElementById("homeBtn");
+
+    homepage.style.display = "none";
+
+    browser.style.display = "block";
+
+    homeBtn.style.display = "block";
+
+    browser.src =
         "https://duckduckgo.com/?q=" +
         encodeURIComponent(query);
-
-    window.open(url, "_blank");
 
 }
 
 window.searchWeb = searchWeb;
+
+/* HOME */
+
+function goHome(){
+
+    const browser =
+        document.getElementById("browserFrame");
+
+    const homepage =
+        document.getElementById("homepage");
+
+    const homeBtn =
+        document.getElementById("homeBtn");
+
+    browser.style.display = "none";
+
+    browser.src = "";
+
+    homepage.style.display = "flex";
+
+    homeBtn.style.display = "none";
+
+}
+
+window.goHome = goHome;
 
 /* ENTER KEY */
 
@@ -215,8 +253,6 @@ function animate(){
         canvas.height
     );
 
-    /* RAIN */
-
     if(effectMode === "rain"){
 
         for(let i = 0; i < rainDrops.length; i++){
@@ -253,8 +289,6 @@ function animate(){
         }
 
     }
-
-    /* PARTICLES */
 
     else if(effectMode === "particles"){
 
