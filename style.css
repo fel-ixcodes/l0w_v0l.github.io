@@ -48,8 +48,6 @@ body{
 
     z-index:99999;
 
-    opacity:1;
-
     transition:
         opacity 1.2s ease;
 }
@@ -66,33 +64,39 @@ body{
 
     color:white;
 
+    text-shadow:
+        0 0 15px rgba(255,255,255,0.35);
+
     animation:
-        introPulse 2.5s ease-in-out infinite;
+        introAnim 2.2s ease-in-out infinite;
 }
 
-/* PULSE */
+/* ANIMATION */
 
-@keyframes introPulse{
+@keyframes introAnim{
 
     0%{
 
-        transform:scale(0.95);
+        transform:
+            scale(0.92);
 
-        opacity:0.65;
+        opacity:0.55;
     }
 
     50%{
 
-        transform:scale(1);
+        transform:
+            scale(1);
 
         opacity:1;
     }
 
     100%{
 
-        transform:scale(0.95);
+        transform:
+            scale(0.92);
 
-        opacity:0.65;
+        opacity:0.55;
     }
 
 }
