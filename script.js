@@ -1,27 +1,11 @@
 /* =========================
-   STARTUP
-========================= */
-
-window.onload = function(){
-
-    initIntro();
-
-    initEffects();
-
-    initSearch();
-
-};
-
-/* =========================
    INTRO
 ========================= */
 
-function initIntro(){
+window.addEventListener("load", () => {
 
     const intro =
-        document.getElementById("introScreen");
-
-    if(!intro) return;
+        document.getElementById("intro");
 
     setTimeout(() => {
 
@@ -31,506 +15,273 @@ function initIntro(){
 
             intro.remove();
 
-        }, 1200);
+        }, 1000);
 
-    }, 2400);
+    }, 2300);
 
-}
-
-/* =========================
-   SEARCH SYSTEM
-========================= */
-
-function initSearch(){
-
-    const input =
-        document.getElementById("searchInput");
-
-    if(!input) return;
-
-    input.addEventListener(
-        "keydown",
-        function(e){
-
-            if(e.key === "Enter"){
-
-                searchWeb();
-
-            }
-
-        }
-    );
-
-}
-
-function searchWeb(){
-
-    const input =
-        document.getElementById("searchInput");
-
-    if(!input) return;
-
-    const query =
-        input.value.trim();
-
-    if(query === "") return;
-
-    openBrowserApp();
-
-    loadInternalPage(query);
-
-}
-
-window.searchWeb = searchWeb;
-
-/* =========================
-   BROWSER APP
-========================= */
-
-function openBrowserApp(){
-
-    const browser =
-        document.getElementById("browserWindow");
-
-    if(browser){
-
-        browser.style.display = "flex";
-
-    }
-
-}
-
-window.openBrowserApp = openBrowserApp;
-
-function closeBrowser(){
-
-    const browser =
-        document.getElementById("browserWindow");
-
-    if(browser){
-
-        browser.style.display = "none";
-
-    }
-
-}
-
-window.closeBrowser = closeBrowser;
-
-function minimizeBrowser(){
-
-    closeBrowser();
-
-}
-
-window.minimizeBrowser = minimizeBrowser;
-
-function goHome(){
-
-    closeBrowser();
-
-}
-
-window.goHome = goHome;
-
-/* =========================
-   INTERNAL PAGES
-========================= */
-
-function loadInternalPage(query){
-
-    const frame =
-        document.getElementById("browserFrame");
-
-    if(!frame) return;
-
-    const html = `
-
-    <html>
-
-    <head>
-
-    <style>
-
-    body{
-
-        margin:0;
-
-        background:#111;
-
-        color:white;
-
-        font-family:Arial,sans-serif;
-
-        padding:50px;
-    }
-
-    h1{
-
-        font-size:54px;
-    }
-
-    .card{
-
-        margin-top:20px;
-
-        padding:24px;
-
-        background:#1b1b1b;
-
-        border:1px solid #2d2d2d;
-
-        border-radius:20px;
-    }
-
-    p{
-
-        opacity:0.75;
-
-        line-height:1.6;
-    }
-
-    </style>
-
-    </head>
-
-    <body>
-
-        <h1>${query}</h1>
-
-        <div class="card">
-
-            <h2>Browser App Online</h2>
-
-            <p>
-                Internal browser system is functioning.
-            </p>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Future Features</h2>
-
-            <p>
-                Tabs, bookmarks, widgets,
-                games, apps, and custom pages.
-            </p>
-
-        </div>
-
-    </body>
-
-    </html>
-
-    `;
-
-    frame.src =
-        "data:text/html;charset=utf-8," +
-        encodeURIComponent(html);
-
-}
-
-/* =========================
-   TOOLBAR
-========================= */
-
-function browserNavigate(){
-
-    const input =
-        document.getElementById("browserSearch");
-
-    if(!input) return;
-
-    const query =
-        input.value.trim();
-
-    if(query === "") return;
-
-    loadInternalPage(query);
-
-}
-
-window.browserNavigate = browserNavigate;
-
-function browserRefresh(){
-
-    const frame =
-        document.getElementById("browserFrame");
-
-    try{
-
-        frame.contentWindow.location.reload();
-
-    }catch(e){}
-
-}
-
-window.browserRefresh = browserRefresh;
-
-function browserBack(){
-
-    const frame =
-        document.getElementById("browserFrame");
-
-    try{
-
-        frame.contentWindow.history.back();
-
-    }catch(e){}
-
-}
-
-window.browserBack = browserBack;
-
-function browserForward(){
-
-    const frame =
-        document.getElementById("browserFrame");
-
-    try{
-
-        frame.contentWindow.history.forward();
-
-    }catch(e){}
-
-}
-
-window.browserForward = browserForward;
+});
 
 /* =========================
    SETTINGS
 ========================= */
 
-function toggleSettings(){
+const settingsButton =
+    document.getElementById("settingsButton");
 
-    const panel =
-        document.getElementById("settingsPanel");
+const settingsPanel =
+    document.getElementById("settingsPanel");
 
-    if(!panel) return;
+const closeSettings =
+    document.getElementById("closeSettings");
 
-    panel.classList.toggle("active");
+settingsButton.onclick = () => {
 
-}
+    settingsPanel.classList.add("active");
 
-window.toggleSettings = toggleSettings;
+};
 
-function toggleDropdown(id){
+closeSettings.onclick = () => {
 
-    const dropdown =
-        document.getElementById(id);
+    settingsPanel.classList.remove("active");
 
-    if(!dropdown) return;
-
-    dropdown.classList.toggle("active");
-
-}
-
-window.toggleDropdown = toggleDropdown;
+};
 
 /* =========================
-   EFFECTS
+   SEARCH
 ========================= */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const searchBtn =
+    document.getElementById("searchBtn");
+
+function doSearch(){
+
+    const query =
+        searchInput.value.trim();
+
+    if(query === "") return;
+
+    window.open(
+        `https://duckduckgo.com/?q=${encodeURIComponent(query)}`,
+        "_blank"
+    );
+
+}
+
+searchBtn.onclick = doSearch;
+
+searchInput.addEventListener(
+    "keydown",
+    (e) => {
+
+        if(e.key === "Enter"){
+
+            doSearch();
+
+        }
+
+    }
+);
+
+/* =========================
+   BACKGROUND EFFECTS
+========================= */
+
+const canvas =
+    document.getElementById("bgCanvas");
+
+const ctx =
+    canvas.getContext("2d");
 
 let effectMode = "rain";
 
-function applySettings(){
+/* SETTINGS */
 
-    const mode =
-        document.getElementById("effectMode");
+const effectSelect =
+    document.getElementById("effectSelect");
 
-    if(mode){
+effectSelect.addEventListener(
+    "change",
+    () => {
 
-        effectMode = mode.value;
+        effectMode =
+            effectSelect.value;
 
     }
+);
+
+/* RESIZE */
+
+function resizeCanvas(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
 
 }
 
-window.applySettings = applySettings;
+resizeCanvas();
 
-function initEffects(){
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
 
-    const canvas =
-        document.getElementById("rain");
+/* RAIN */
 
-    if(!canvas) return;
+const rainDrops = [];
 
-    const ctx =
-        canvas.getContext("2d");
+for(let i = 0; i < 700; i++){
 
-    if(!ctx) return;
+    rainDrops.push({
 
-    function resize(){
+        x:
+            Math.random() * canvas.width,
 
-        canvas.width =
-            window.innerWidth;
+        y:
+            Math.random() * canvas.height,
 
-        canvas.height =
-            window.innerHeight;
+        len:
+            Math.random() * 20 + 5,
 
-    }
+        speed:
+            Math.random() * 7 + 3,
 
-    resize();
+        opacity:
+            Math.random() * 0.5 + 0.1
 
-    window.addEventListener(
-        "resize",
-        resize
+    });
+
+}
+
+/* PARTICLES */
+
+const particles = [];
+
+for(let i = 0; i < 140; i++){
+
+    particles.push({
+
+        x:
+            Math.random() * canvas.width,
+
+        y:
+            Math.random() * canvas.height,
+
+        radius:
+            Math.random() * 3 + 1,
+
+        vx:
+            (Math.random()-0.5)*0.8,
+
+        vy:
+            (Math.random()-0.5)*0.8,
+
+        opacity:
+            Math.random() * 0.5 + 0.2
+
+    });
+
+}
+
+/* ANIMATE */
+
+function animate(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
     );
 
     /* RAIN */
 
-    const rain = [];
+    if(effectMode === "rain"){
 
-    for(let i = 0; i < 700; i++){
+        for(let drop of rainDrops){
 
-        rain.push({
+            ctx.beginPath();
 
-            x:
-                Math.random() * canvas.width,
+            ctx.moveTo(
+                drop.x,
+                drop.y
+            );
 
-            y:
-                Math.random() * canvas.height,
+            ctx.lineTo(
+                drop.x,
+                drop.y + drop.len
+            );
 
-            len:
-                Math.random() * 20 + 5,
+            ctx.strokeStyle =
+                `rgba(255,255,255,${drop.opacity})`;
 
-            speed:
-                Math.random() * 7 + 3,
+            ctx.stroke();
 
-            opacity:
-                Math.random() * 0.5 + 0.1
+            drop.y += drop.speed;
 
-        });
+            if(drop.y > canvas.height){
+
+                drop.y = -20;
+
+                drop.x =
+                    Math.random() *
+                    canvas.width;
+
+            }
+
+        }
 
     }
 
     /* PARTICLES */
 
-    const particles = [];
+    else if(effectMode === "particles"){
 
-    for(let i = 0; i < 140; i++){
+        for(let p of particles){
 
-        particles.push({
+            ctx.beginPath();
 
-            x:
-                Math.random() * canvas.width,
+            ctx.arc(
+                p.x,
+                p.y,
+                p.radius,
+                0,
+                Math.PI * 2
+            );
 
-            y:
-                Math.random() * canvas.height,
+            ctx.fillStyle =
+                `rgba(255,255,255,${p.opacity})`;
 
-            radius:
-                Math.random() * 3 + 1,
+            ctx.fill();
 
-            vx:
-                (Math.random()-0.5)*0.8,
+            p.x += p.vx;
+            p.y += p.vy;
 
-            vy:
-                (Math.random()-0.5)*0.8,
+            if(p.x < 0)
+                p.x = canvas.width;
 
-            opacity:
-                Math.random() * 0.5 + 0.2
+            if(p.x > canvas.width)
+                p.x = 0;
 
-        });
+            if(p.y < 0)
+                p.y = canvas.height;
 
-    }
-
-    /* ANIMATE */
-
-    function animate(){
-
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-        /* RAIN */
-
-        if(effectMode === "rain"){
-
-            for(let drop of rain){
-
-                ctx.beginPath();
-
-                ctx.moveTo(
-                    drop.x,
-                    drop.y
-                );
-
-                ctx.lineTo(
-                    drop.x,
-                    drop.y + drop.len
-                );
-
-                ctx.strokeStyle =
-                    `rgba(255,255,255,${drop.opacity})`;
-
-                ctx.stroke();
-
-                drop.y += drop.speed;
-
-                if(drop.y > canvas.height){
-
-                    drop.y = -20;
-
-                    drop.x =
-                        Math.random() *
-                        canvas.width;
-
-                }
-
-            }
+            if(p.y > canvas.height)
+                p.y = 0;
 
         }
 
-        /* PARTICLES */
-
-        else if(effectMode === "particles"){
-
-            for(let p of particles){
-
-                ctx.beginPath();
-
-                ctx.arc(
-                    p.x,
-                    p.y,
-                    p.radius,
-                    0,
-                    Math.PI * 2
-                );
-
-                ctx.fillStyle =
-                    `rgba(255,255,255,${p.opacity})`;
-
-                ctx.fill();
-
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if(p.x < 0)
-                    p.x = canvas.width;
-
-                if(p.x > canvas.width)
-                    p.x = 0;
-
-                if(p.y < 0)
-                    p.y = canvas.height;
-
-                if(p.y > canvas.height)
-                    p.y = 0;
-
-            }
-
-        }
-
-        requestAnimationFrame(
-            animate
-        );
-
     }
 
-    animate();
+    requestAnimationFrame(
+        animate
+    );
 
 }
+
+animate();
