@@ -4,18 +4,22 @@ window.addEventListener("DOMContentLoaded", () => {
    INTRO
 ========================= */
 
-setTimeout(() => {
+window.addEventListener("load", () => {
 
-    const intro =
-        document.getElementById("introScreen");
+    setTimeout(() => {
 
-    if(intro){
+        const intro =
+            document.getElementById("introScreen");
 
-        intro.classList.add("hide");
+        if(intro){
 
-    }
+            intro.classList.add("hide");
 
-}, 3000);
+        }
+
+    }, 3000);
+
+});
 
 /* =========================
    ELEMENTS
@@ -44,7 +48,8 @@ function searchWeb(){
 
     if(!input) return;
 
-    const query = input.value.trim();
+    const query =
+        input.value.trim();
 
     if(!query) return;
 
@@ -64,7 +69,8 @@ function openBrowserApp(){
 
     if(browserWindow){
 
-        browserWindow.style.display = "flex";
+        browserWindow.style.display =
+            "flex";
 
     }
 
@@ -76,7 +82,8 @@ function closeBrowser(){
 
     if(browserWindow){
 
-        browserWindow.style.display = "none";
+        browserWindow.style.display =
+            "none";
 
     }
 
@@ -88,7 +95,8 @@ function minimizeBrowser(){
 
     if(browserWindow){
 
-        browserWindow.style.display = "none";
+        browserWindow.style.display =
+            "none";
 
     }
 
@@ -198,7 +206,8 @@ function browserNavigate(){
 
     if(!input) return;
 
-    const query = input.value.trim();
+    const query =
+        input.value.trim();
 
     if(!query) return;
 
@@ -212,7 +221,8 @@ function browserRefresh(){
 
     try{
 
-        browserFrame.contentWindow.location.reload();
+        browserFrame.contentWindow
+        .location.reload();
 
     }catch(e){}
 
@@ -224,7 +234,8 @@ function browserBack(){
 
     try{
 
-        browserFrame.contentWindow.history.back();
+        browserFrame.contentWindow
+        .history.back();
 
     }catch(e){}
 
@@ -236,7 +247,8 @@ function browserForward(){
 
     try{
 
-        browserFrame.contentWindow.history.forward();
+        browserFrame.contentWindow
+        .history.forward();
 
     }catch(e){}
 
@@ -264,7 +276,9 @@ function toggleSettings(){
 
     if(settingsPanel){
 
-        settingsPanel.classList.toggle("active");
+        settingsPanel.classList.toggle(
+            "active"
+        );
 
     }
 
@@ -279,13 +293,17 @@ function toggleDropdown(id, button){
 
     if(dropdown){
 
-        dropdown.classList.toggle("active");
+        dropdown.classList.toggle(
+            "active"
+        );
 
     }
 
     if(button){
 
-        button.classList.toggle("active");
+        button.classList.toggle(
+            "active"
+        );
 
     }
 
@@ -331,10 +349,12 @@ if(canvas){
             rainDrops.push({
 
                 x:
-                    Math.random() * canvas.width,
+                    Math.random() *
+                    canvas.width,
 
                 y:
-                    Math.random() * canvas.height,
+                    Math.random() *
+                    canvas.height,
 
                 length:
                     Math.random() * 20 + 5,
@@ -362,19 +382,21 @@ if(canvas){
             particles.push({
 
                 x:
-                    Math.random() * canvas.width,
+                    Math.random() *
+                    canvas.width,
 
                 y:
-                    Math.random() * canvas.height,
+                    Math.random() *
+                    canvas.height,
 
                 radius:
                     Math.random() * 3 + 1,
 
                 speedX:
-                    (Math.random() - 0.5) * 0.8,
+                    (Math.random()-0.5)*0.8,
 
                 speedY:
-                    (Math.random() - 0.5) * 0.8,
+                    (Math.random()-0.5)*0.8,
 
                 opacity:
                     Math.random() * 0.5 + 0.2
@@ -398,7 +420,9 @@ if(canvas){
     function applySettings(){
 
         const mode =
-            document.getElementById("effectMode");
+            document.getElementById(
+                "effectMode"
+            );
 
         if(mode){
 
@@ -408,7 +432,8 @@ if(canvas){
 
     }
 
-    window.applySettings = applySettings;
+    window.applySettings =
+        applySettings;
 
     /* ANIMATION */
 
@@ -451,7 +476,8 @@ if(canvas){
                     drop.y = -20;
 
                     drop.x =
-                        Math.random() * canvas.width;
+                        Math.random() *
+                        canvas.width;
 
                 }
 
@@ -461,7 +487,9 @@ if(canvas){
 
         /* PARTICLES */
 
-        else if(effectMode === "particles"){
+        else if(
+            effectMode === "particles"
+        ){
 
             particles.forEach(p => {
 
@@ -499,21 +527,26 @@ if(canvas){
 
         }
 
-        requestAnimationFrame(animate);
+        requestAnimationFrame(
+            animate
+        );
 
     }
 
     animate();
 
-    window.addEventListener("resize", () => {
+    window.addEventListener(
+        "resize",
+        () => {
 
-        resizeCanvas();
+            resizeCanvas();
 
-        createRain();
+            createRain();
 
-        createParticles();
+            createParticles();
 
-    });
+        }
+    );
 
 }
 
@@ -522,7 +555,9 @@ if(canvas){
 ========================= */
 
 const searchInput =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "searchInput"
+    );
 
 if(searchInput){
 
