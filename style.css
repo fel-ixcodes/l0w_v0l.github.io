@@ -6,30 +6,27 @@
 
 body{
 
+    width:100%;
+    height:100vh;
+
     overflow:hidden;
 
     font-family:'Inter',sans-serif;
 
-    width:100%;
-    height:100vh;
-
     color:white;
 
     background:
-        radial-gradient(
-            circle at top,
-            #3d3d3d 0%,
-            #1f1f1f 35%,
-            #111111 70%,
-            #080808 100%
+        linear-gradient(
+            180deg,
+            #3a3a3a 0%,
+            #1d1d1d 40%,
+            #0d0d0d 100%
         );
 }
 
-/* =========================
-   INTRO SCREEN
-========================= */
+/* INTRO */
 
-#introScreen{
+#intro{
 
     position:fixed;
 
@@ -46,15 +43,13 @@ body{
     align-items:center;
     justify-content:center;
 
-    z-index:99999;
+    z-index:9999;
 
     transition:
-        opacity 1.2s ease;
+        opacity 1s ease;
 }
 
-/* INTRO LOGO */
-
-#introLogo{
+#introText{
 
     font-size:110px;
 
@@ -62,50 +57,38 @@ body{
 
     letter-spacing:8px;
 
-    color:white;
-
-    text-shadow:
-        0 0 15px rgba(255,255,255,0.35);
-
     animation:
-        introAnim 2.2s ease-in-out infinite;
+        pulse 2s ease-in-out infinite;
 }
 
-/* ANIMATION */
-
-@keyframes introAnim{
+@keyframes pulse{
 
     0%{
 
-        transform:
-            scale(0.92);
+        transform:scale(0.95);
 
-        opacity:0.55;
+        opacity:0.5;
     }
 
     50%{
 
-        transform:
-            scale(1);
+        transform:scale(1);
 
         opacity:1;
     }
 
     100%{
 
-        transform:
-            scale(0.92);
+        transform:scale(0.95);
 
-        opacity:0.55;
+        opacity:0.5;
     }
 
 }
 
-/* =========================
-   BACKGROUND EFFECTS
-========================= */
+/* BACKGROUND */
 
-#rain{
+#bgCanvas{
 
     position:fixed;
 
@@ -118,11 +101,9 @@ body{
     z-index:-1;
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+/* MAIN */
 
-.container{
+.main{
 
     width:100%;
     height:100vh;
@@ -137,32 +118,27 @@ body{
     text-align:center;
 }
 
-/* =========================
-   LOGO
-========================= */
+/* LOGO */
 
 .logo{
 
-    font-size:92px;
+    font-size:90px;
 
     font-weight:800;
 
-    letter-spacing:6px;
-
     margin-bottom:35px;
 
+    letter-spacing:5px;
+
     text-shadow:
-        0 0 10px rgba(255,255,255,0.3),
-        0 0 25px rgba(255,255,255,0.12);
+        0 0 15px rgba(255,255,255,0.25);
 }
 
-/* =========================
-   SEARCH BAR
-========================= */
+/* SEARCH */
 
-.search-box{
+.searchBar{
 
-    width:720px;
+    width:700px;
     max-width:95%;
 
     display:flex;
@@ -182,8 +158,7 @@ body{
     backdrop-filter:blur(14px);
 }
 
-.search-box input,
-#browserSearch{
+.searchBar input{
 
     flex:1;
 
@@ -199,23 +174,15 @@ body{
     font-size:16px;
 }
 
-.search-box input::placeholder,
-#browserSearch::placeholder{
+.searchBar input::placeholder{
 
     color:
         rgba(255,255,255,0.55);
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
-.search-box button,
-.settings-btn,
-.apply-btn,
-#browserToolbar button,
-#windowButtons button,
-.close-btn{
+.searchBar button,
+#settingsButton,
+#closeSettings{
 
     border:none;
 
@@ -233,12 +200,9 @@ body{
     transition:0.2s ease;
 }
 
-.search-box button:hover,
-.settings-btn:hover,
-.apply-btn:hover,
-#browserToolbar button:hover,
-#windowButtons button:hover,
-.close-btn:hover{
+.searchBar button:hover,
+#settingsButton:hover,
+#closeSettings:hover{
 
     background:
         rgba(255,255,255,0.18);
@@ -247,188 +211,16 @@ body{
         translateY(-2px);
 }
 
-.settings-btn{
+/* SETTINGS BUTTON */
+
+#settingsButton{
 
     margin-top:24px;
 }
 
-/* =========================
-   TASKBAR
-========================= */
+/* SETTINGS PANEL */
 
-#taskbar{
-
-    position:fixed;
-
-    bottom:18px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    gap:14px;
-
-    padding:14px;
-
-    border-radius:24px;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter:blur(18px);
-
-    z-index:1000;
-}
-
-/* =========================
-   DOCK ICONS
-========================= */
-
-.dock-app{
-
-    width:56px;
-    height:56px;
-
-    border:none;
-
-    border-radius:18px;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    color:white;
-
-    font-size:24px;
-
-    cursor:pointer;
-
-    transition:0.2s ease;
-}
-
-.dock-app:hover{
-
-    transform:
-        translateY(-6px)
-        scale(1.05);
-
-    background:
-        rgba(255,255,255,0.14);
-}
-
-/* =========================
-   BROWSER WINDOW
-========================= */
-
-#browserWindow{
-
-    position:fixed;
-
-    top:50%;
-    left:50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    width:92%;
-    height:88vh;
-
-    background:
-        rgba(18,18,18,0.95);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    border-radius:24px;
-
-    overflow:hidden;
-
-    display:none;
-
-    flex-direction:column;
-
-    backdrop-filter:blur(20px);
-
-    z-index:500;
-}
-
-/* =========================
-   BROWSER TOPBAR
-========================= */
-
-#browserTopbar{
-
-    height:60px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 16px;
-
-    background:
-        rgba(255,255,255,0.04);
-}
-
-/* =========================
-   TABS
-========================= */
-
-#tabs{
-
-    display:flex;
-}
-
-.tab{
-
-    padding:10px 18px;
-
-    border-radius:12px;
-
-    background:
-        rgba(255,255,255,0.08);
-}
-
-/* =========================
-   TOOLBAR
-========================= */
-
-#browserToolbar{
-
-    display:flex;
-
-    gap:10px;
-
-    padding:12px;
-
-    background:
-        rgba(255,255,255,0.03);
-}
-
-/* =========================
-   IFRAME
-========================= */
-
-#browserFrame{
-
-    flex:1;
-
-    width:100%;
-
-    border:none;
-
-    background:white;
-}
-
-/* =========================
-   SETTINGS PANEL
-========================= */
-
-.settings-panel{
+#settingsPanel{
 
     position:fixed;
 
@@ -439,22 +231,20 @@ body{
         translate(-50%, -50%)
         scale(0.9);
 
-    width:420px;
+    width:400px;
     max-width:92%;
 
     background:
         rgba(20,20,20,0.95);
 
     border:
-        1px solid rgba(255,255,255,0.12);
+        1px solid rgba(255,255,255,0.1);
 
     border-radius:24px;
 
     padding:24px;
 
     backdrop-filter:blur(16px);
-
-    z-index:2000;
 
     opacity:0;
 
@@ -465,7 +255,9 @@ body{
         transform 0.25s ease;
 }
 
-.settings-panel.active{
+/* ACTIVE */
+
+#settingsPanel.active{
 
     opacity:1;
 
@@ -476,11 +268,9 @@ body{
         scale(1);
 }
 
-/* =========================
-   SETTINGS HEADER
-========================= */
+/* SETTINGS TOP */
 
-.settings-header{
+.settingsTop{
 
     display:flex;
 
@@ -490,87 +280,14 @@ body{
     margin-bottom:20px;
 }
 
-/* =========================
-   MODULES
-========================= */
+/* SETTINGS */
 
-.module{
+.settingGroup{
 
-    margin-bottom:18px;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    background:
-        rgba(255,255,255,0.04);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
+    margin-top:10px;
 }
 
-/* =========================
-   MODULE HEADER
-========================= */
-
-.module-header{
-
-    width:100%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    padding:16px 18px;
-
-    background:transparent;
-
-    border:none;
-
-    color:white;
-
-    font-size:15px;
-
-    cursor:pointer;
-}
-
-/* =========================
-   DROPDOWN
-========================= */
-
-.module-dropdown{
-
-    max-height:0;
-
-    overflow:hidden;
-
-    transition:
-        max-height 0.3s ease,
-        padding 0.3s ease;
-
-    padding:
-        0 18px;
-}
-
-.module-dropdown.active{
-
-    max-height:400px;
-
-    padding:
-        10px 18px 18px;
-}
-
-/* =========================
-   SETTINGS ITEMS
-========================= */
-
-.setting{
-
-    margin-bottom:18px;
-}
-
-.setting label{
+.settingGroup label{
 
     display:block;
 
@@ -580,7 +297,7 @@ body{
         rgba(255,255,255,0.7);
 }
 
-.setting select{
+.settingGroup select{
 
     width:100%;
 
@@ -597,27 +314,18 @@ body{
     color:white;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
-    #introLogo{
+    #introText{
 
         font-size:60px;
-
-        letter-spacing:4px;
     }
 
     .logo{
 
         font-size:56px;
-    }
-
-    .search-box{
-
-        width:95%;
     }
 
 }
