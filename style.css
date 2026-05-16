@@ -10,16 +10,19 @@ body{
 
     font-family:'Inter',sans-serif;
 
+    width:100%;
     height:100vh;
 
     color:white;
 
     background:
-        radial-gradient(circle at top,
-        #3d3d3d 0%,
-        #1f1f1f 35%,
-        #111111 70%,
-        #080808 100%);
+        radial-gradient(
+            circle at top,
+            #3d3d3d 0%,
+            #1f1f1f 35%,
+            #111111 70%,
+            #080808 100%
+        );
 }
 
 /* =========================
@@ -45,26 +48,10 @@ body{
 
     z-index:99999;
 
-    overflow:hidden;
-
     opacity:1;
 
-    visibility:visible;
-
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-}
-
-/* HIDDEN INTRO */
-
-#introScreen.hide{
-
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
+        opacity 1.2s ease;
 }
 
 /* INTRO LOGO */
@@ -83,7 +70,7 @@ body{
         introPulse 2.5s ease-in-out infinite;
 }
 
-/* INTRO ANIMATION */
+/* PULSE */
 
 @keyframes introPulse{
 
@@ -91,9 +78,7 @@ body{
 
         transform:scale(0.95);
 
-        opacity:0.6;
-
-        filter:blur(4px);
+        opacity:0.65;
     }
 
     50%{
@@ -101,22 +86,20 @@ body{
         transform:scale(1);
 
         opacity:1;
-
-        filter:blur(0px);
     }
 
     100%{
 
         transform:scale(0.95);
 
-        opacity:0.6;
-
-        filter:blur(4px);
+        opacity:0.65;
     }
 
 }
 
-/* EFFECT CANVAS */
+/* =========================
+   BACKGROUND EFFECTS
+========================= */
 
 #rain{
 
@@ -131,7 +114,9 @@ body{
     z-index:-1;
 }
 
-/* HOMEPAGE */
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 .container{
 
@@ -148,11 +133,13 @@ body{
     text-align:center;
 }
 
-/* LOGO */
+/* =========================
+   LOGO
+========================= */
 
 .logo{
 
-    font-size:90px;
+    font-size:92px;
 
     font-weight:800;
 
@@ -161,11 +148,13 @@ body{
     margin-bottom:35px;
 
     text-shadow:
-        0 0 10px rgba(255,255,255,0.4),
-        0 0 25px rgba(255,255,255,0.15);
+        0 0 10px rgba(255,255,255,0.3),
+        0 0 25px rgba(255,255,255,0.12);
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH BAR
+========================= */
 
 .search-box{
 
@@ -176,15 +165,15 @@ body{
 
     gap:10px;
 
+    padding:10px;
+
+    border-radius:999px;
+
     background:
         rgba(255,255,255,0.08);
 
     border:
         1px solid rgba(255,255,255,0.12);
-
-    border-radius:999px;
-
-    padding:10px;
 
     backdrop-filter:blur(14px);
 }
@@ -194,10 +183,10 @@ body{
 
     flex:1;
 
-    background:transparent;
-
     border:none;
     outline:none;
+
+    background:transparent;
 
     color:white;
 
@@ -213,24 +202,27 @@ body{
         rgba(255,255,255,0.55);
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 
 .search-box button,
 .settings-btn,
 .apply-btn,
 #browserToolbar button,
-#windowButtons button{
+#windowButtons button,
+.close-btn{
 
     border:none;
+
+    padding:12px 18px;
+
+    border-radius:14px;
 
     background:
         rgba(255,255,255,0.1);
 
     color:white;
-
-    padding:12px 18px;
-
-    border-radius:14px;
 
     cursor:pointer;
 
@@ -241,20 +233,24 @@ body{
 .settings-btn:hover,
 .apply-btn:hover,
 #browserToolbar button:hover,
-#windowButtons button:hover{
+#windowButtons button:hover,
+.close-btn:hover{
 
     background:
-        rgba(255,255,255,0.16);
+        rgba(255,255,255,0.18);
 
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .settings-btn{
 
-    margin-top:25px;
+    margin-top:24px;
 }
 
-/* TASKBAR */
+/* =========================
+   TASKBAR
+========================= */
 
 #taskbar{
 
@@ -269,22 +265,24 @@ body{
 
     gap:14px;
 
+    padding:14px;
+
+    border-radius:24px;
+
     background:
         rgba(255,255,255,0.08);
 
     border:
-        1px solid rgba(255,255,255,0.1);
-
-    padding:14px;
-
-    border-radius:24px;
+        1px solid rgba(255,255,255,0.12);
 
     backdrop-filter:blur(18px);
 
     z-index:1000;
 }
 
-/* DOCK APPS */
+/* =========================
+   DOCK ICONS
+========================= */
 
 .dock-app{
 
@@ -310,14 +308,16 @@ body{
 .dock-app:hover{
 
     transform:
-        translateY(-5px)
+        translateY(-6px)
         scale(1.05);
 
     background:
         rgba(255,255,255,0.14);
 }
 
-/* BROWSER WINDOW */
+/* =========================
+   BROWSER WINDOW
+========================= */
 
 #browserWindow{
 
@@ -351,7 +351,9 @@ body{
     z-index:500;
 }
 
-/* TOPBAR */
+/* =========================
+   BROWSER TOPBAR
+========================= */
 
 #browserTopbar{
 
@@ -368,7 +370,9 @@ body{
         rgba(255,255,255,0.04);
 }
 
-/* TABS */
+/* =========================
+   TABS
+========================= */
 
 #tabs{
 
@@ -385,7 +389,9 @@ body{
         rgba(255,255,255,0.08);
 }
 
-/* TOOLBAR */
+/* =========================
+   TOOLBAR
+========================= */
 
 #browserToolbar{
 
@@ -399,7 +405,9 @@ body{
         rgba(255,255,255,0.03);
 }
 
-/* IFRAME */
+/* =========================
+   IFRAME
+========================= */
 
 #browserFrame{
 
@@ -412,7 +420,9 @@ body{
     background:white;
 }
 
-/* SETTINGS PANEL */
+/* =========================
+   SETTINGS PANEL
+========================= */
 
 .settings-panel{
 
@@ -462,7 +472,9 @@ body{
         scale(1);
 }
 
-/* SETTINGS HEADER */
+/* =========================
+   SETTINGS HEADER
+========================= */
 
 .settings-header{
 
@@ -474,26 +486,9 @@ body{
     margin-bottom:20px;
 }
 
-/* CLOSE BUTTON */
-
-.close-btn{
-
-    width:42px;
-    height:42px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    color:white;
-
-    cursor:pointer;
-}
-
-/* MODULES */
+/* =========================
+   MODULES
+========================= */
 
 .module{
 
@@ -510,7 +505,9 @@ body{
         1px solid rgba(255,255,255,0.08);
 }
 
-/* MODULE HEADER */
+/* =========================
+   MODULE HEADER
+========================= */
 
 .module-header{
 
@@ -534,7 +531,9 @@ body{
     cursor:pointer;
 }
 
-/* DROPDOWN */
+/* =========================
+   DROPDOWN
+========================= */
 
 .module-dropdown{
 
@@ -558,7 +557,9 @@ body{
         10px 18px 18px;
 }
 
-/* SETTINGS */
+/* =========================
+   SETTINGS ITEMS
+========================= */
 
 .setting{
 
@@ -592,7 +593,9 @@ body{
     color:white;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px){
 
