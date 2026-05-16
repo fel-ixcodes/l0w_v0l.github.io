@@ -86,6 +86,124 @@ searchInput.addEventListener(
 );
 
 /* =========================
+   TAB CLOAK
+========================= */
+
+let favicon =
+    document.querySelector("link[rel='icon']");
+
+const cloakPresets =
+    document.querySelectorAll(
+        ".cloakPreset"
+    );
+
+cloakPresets.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const title =
+                button.dataset.title;
+
+            const icon =
+                button.dataset.icon;
+
+            document.title =
+                title;
+
+            favicon.href =
+                icon;
+
+            localStorage.setItem(
+                "tabTitle",
+                title
+            );
+
+            localStorage.setItem(
+                "tabIcon",
+                icon
+            );
+
+        }
+    );
+
+});
+
+const customTabName =
+    document.getElementById(
+        "customTabName"
+    );
+
+const customFavicon =
+    document.getElementById(
+        "customFavicon"
+    );
+
+const applyCustomCloak =
+    document.getElementById(
+        "applyCustomCloak"
+    );
+
+applyCustomCloak.onclick = () => {
+
+    const title =
+        customTabName.value.trim();
+
+    const icon =
+        customFavicon.value.trim();
+
+    if(title){
+
+        document.title =
+            title;
+
+        localStorage.setItem(
+            "tabTitle",
+            title
+        );
+
+    }
+
+    if(icon){
+
+        favicon.href =
+            icon;
+
+        localStorage.setItem(
+            "tabIcon",
+            icon
+        );
+
+    }
+
+};
+
+const savedTitle =
+    localStorage.getItem(
+        "tabTitle"
+    );
+
+const savedIcon =
+    localStorage.getItem(
+        "tabIcon"
+    );
+
+if(savedTitle){
+
+    document.title =
+        savedTitle;
+
+}
+
+if(savedIcon){
+
+    favicon.href =
+        savedIcon;
+
+}
+
+/* =========================
    BACKGROUND EFFECTS
 ========================= */
 
@@ -97,8 +215,6 @@ const ctx =
 
 let effectMode = "rain";
 
-/* SETTINGS */
-
 const effectSelect =
     document.getElementById("effectSelect");
 
@@ -109,8 +225,28 @@ effectSelect.addEventListener(
         effectMode =
             effectSelect.value;
 
+        localStorage.setItem(
+            "bgEffect",
+            effectMode
+        );
+
     }
 );
+
+const savedEffect =
+    localStorage.getItem(
+        "bgEffect"
+    );
+
+if(savedEffect){
+
+    effectMode =
+        savedEffect;
+
+    effectSelect.value =
+        savedEffect;
+
+}
 
 /* RESIZE */
 
@@ -199,8 +335,6 @@ function animate(){
         canvas.height
     );
 
-    /* RAIN */
-
     if(effectMode === "rain"){
 
         for(let drop of rainDrops){
@@ -237,8 +371,6 @@ function animate(){
         }
 
     }
-
-    /* PARTICLES */
 
     else if(effectMode === "particles"){
 
