@@ -1,45 +1,69 @@
-window.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   STARTUP
+========================= */
+
+window.onload = function(){
+
+    initIntro();
+
+    initEffects();
+
+    initSearch();
+
+};
 
 /* =========================
    INTRO
 ========================= */
 
-window.addEventListener("load", () => {
+function initIntro(){
+
+    const intro =
+        document.getElementById("introScreen");
+
+    if(!intro) return;
 
     setTimeout(() => {
 
-        const intro =
-            document.getElementById("introScreen");
+        intro.style.opacity = "0";
 
-        if(intro){
+        intro.style.pointerEvents = "none";
 
-            intro.classList.add("hide");
+        setTimeout(() => {
+
+            intro.style.display = "none";
+
+        }, 1200);
+
+    }, 2600);
+
+}
+
+/* =========================
+   SEARCH SYSTEM
+========================= */
+
+function initSearch(){
+
+    const input =
+        document.getElementById("searchInput");
+
+    if(!input) return;
+
+    input.addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key === "Enter"){
+
+                searchWeb();
+
+            }
 
         }
+    );
 
-    }, 3000);
-
-});
-
-/* =========================
-   ELEMENTS
-========================= */
-
-const browserWindow =
-    document.getElementById("browserWindow");
-
-const browserFrame =
-    document.getElementById("browserFrame");
-
-const settingsPanel =
-    document.getElementById("settingsPanel");
-
-const canvas =
-    document.getElementById("rain");
-
-/* =========================
-   SEARCH
-========================= */
+}
 
 function searchWeb(){
 
@@ -51,7 +75,7 @@ function searchWeb(){
     const query =
         input.value.trim();
 
-    if(!query) return;
+    if(query === "") return;
 
     openBrowserApp();
 
@@ -62,15 +86,17 @@ function searchWeb(){
 window.searchWeb = searchWeb;
 
 /* =========================
-   BROWSER WINDOW
+   BROWSER APP
 ========================= */
 
 function openBrowserApp(){
 
-    if(browserWindow){
+    const browser =
+        document.getElementById("browserWindow");
 
-        browserWindow.style.display =
-            "flex";
+    if(browser){
+
+        browser.style.display = "flex";
 
     }
 
@@ -80,10 +106,12 @@ window.openBrowserApp = openBrowserApp;
 
 function closeBrowser(){
 
-    if(browserWindow){
+    const browser =
+        document.getElementById("browserWindow");
 
-        browserWindow.style.display =
-            "none";
+    if(browser){
+
+        browser.style.display = "none";
 
     }
 
@@ -93,105 +121,115 @@ window.closeBrowser = closeBrowser;
 
 function minimizeBrowser(){
 
-    if(browserWindow){
-
-        browserWindow.style.display =
-            "none";
-
-    }
+    closeBrowser();
 
 }
 
 window.minimizeBrowser = minimizeBrowser;
 
+function goHome(){
+
+    closeBrowser();
+
+}
+
+window.goHome = goHome;
+
 /* =========================
-   INTERNAL PAGE SYSTEM
+   INTERNAL PAGES
 ========================= */
 
 function loadInternalPage(query){
 
-    if(!browserFrame) return;
+    const frame =
+        document.getElementById("browserFrame");
 
-    browserFrame.src =
+    if(!frame) return;
+
+    const html = `
+
+    <html>
+
+    <head>
+
+    <style>
+
+    body{
+
+        margin:0;
+
+        background:#111;
+
+        color:white;
+
+        font-family:Arial,sans-serif;
+
+        padding:50px;
+    }
+
+    h1{
+
+        font-size:54px;
+    }
+
+    .card{
+
+        margin-top:20px;
+
+        padding:24px;
+
+        background:#1b1b1b;
+
+        border:1px solid #2d2d2d;
+
+        border-radius:20px;
+    }
+
+    p{
+
+        opacity:0.75;
+
+        line-height:1.6;
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+        <h1>${query}</h1>
+
+        <div class="card">
+
+            <h2>Browser App Online</h2>
+
+            <p>
+                Internal browser system is functioning.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Future Features</h2>
+
+            <p>
+                Tabs, bookmarks, widgets,
+                games, apps, and custom pages.
+            </p>
+
+        </div>
+
+    </body>
+
+    </html>
+
+    `;
+
+    frame.src =
         "data:text/html;charset=utf-8," +
-        encodeURIComponent(`
-
-        <html>
-        <head>
-
-        <style>
-
-        body{
-
-            margin:0;
-
-            background:#111;
-
-            color:white;
-
-            font-family:Arial,sans-serif;
-
-            padding:60px;
-        }
-
-        h1{
-
-            font-size:54px;
-        }
-
-        .card{
-
-            margin-top:24px;
-
-            padding:24px;
-
-            border-radius:22px;
-
-            background:#1b1b1b;
-
-            border:1px solid #2d2d2d;
-        }
-
-        p{
-
-            opacity:0.75;
-
-            line-height:1.6;
-        }
-
-        </style>
-
-        </head>
-
-        <body>
-
-            <h1>${query}</h1>
-
-            <div class="card">
-
-                <h2>Browser App Active</h2>
-
-                <p>
-                    Internal browser system loaded successfully.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h2>Search Results</h2>
-
-                <p>
-                    Future updates can include bookmarks,
-                    widgets, notes, apps, and games.
-                </p>
-
-            </div>
-
-        </body>
-        </html>
-
-        `);
+        encodeURIComponent(html);
 
 }
 
@@ -209,7 +247,7 @@ function browserNavigate(){
     const query =
         input.value.trim();
 
-    if(!query) return;
+    if(query === "") return;
 
     loadInternalPage(query);
 
@@ -219,10 +257,12 @@ window.browserNavigate = browserNavigate;
 
 function browserRefresh(){
 
+    const frame =
+        document.getElementById("browserFrame");
+
     try{
 
-        browserFrame.contentWindow
-        .location.reload();
+        frame.contentWindow.location.reload();
 
     }catch(e){}
 
@@ -232,10 +272,12 @@ window.browserRefresh = browserRefresh;
 
 function browserBack(){
 
+    const frame =
+        document.getElementById("browserFrame");
+
     try{
 
-        browserFrame.contentWindow
-        .history.back();
+        frame.contentWindow.history.back();
 
     }catch(e){}
 
@@ -245,10 +287,12 @@ window.browserBack = browserBack;
 
 function browserForward(){
 
+    const frame =
+        document.getElementById("browserFrame");
+
     try{
 
-        browserFrame.contentWindow
-        .history.forward();
+        frame.contentWindow.history.forward();
 
     }catch(e){}
 
@@ -257,55 +301,30 @@ function browserForward(){
 window.browserForward = browserForward;
 
 /* =========================
-   HOME
-========================= */
-
-function goHome(){
-
-    closeBrowser();
-
-}
-
-window.goHome = goHome;
-
-/* =========================
    SETTINGS
 ========================= */
 
 function toggleSettings(){
 
-    if(settingsPanel){
+    const panel =
+        document.getElementById("settingsPanel");
 
-        settingsPanel.classList.toggle(
-            "active"
-        );
+    if(!panel) return;
 
-    }
+    panel.classList.toggle("active");
 
 }
 
 window.toggleSettings = toggleSettings;
 
-function toggleDropdown(id, button){
+function toggleDropdown(id){
 
     const dropdown =
         document.getElementById(id);
 
-    if(dropdown){
+    if(!dropdown) return;
 
-        dropdown.classList.toggle(
-            "active"
-        );
-
-    }
-
-    if(button){
-
-        button.classList.toggle(
-            "active"
-        );
-
-    }
+    dropdown.classList.toggle("active");
 
 }
 
@@ -315,12 +334,36 @@ window.toggleDropdown = toggleDropdown;
    EFFECTS
 ========================= */
 
-if(canvas){
+let effectMode = "rain";
+
+function applySettings(){
+
+    const mode =
+        document.getElementById("effectMode");
+
+    if(mode){
+
+        effectMode = mode.value;
+
+    }
+
+}
+
+window.applySettings = applySettings;
+
+function initEffects(){
+
+    const canvas =
+        document.getElementById("rain");
+
+    if(!canvas) return;
 
     const ctx =
         canvas.getContext("2d");
 
-    function resizeCanvas(){
+    if(!ctx) return;
+
+    function resize(){
 
         canvas.width =
             window.innerWidth;
@@ -330,112 +373,71 @@ if(canvas){
 
     }
 
-    resizeCanvas();
+    resize();
 
-    let effectMode = "rain";
-
-    const rainDrops = [];
-
-    const particles = [];
+    window.addEventListener(
+        "resize",
+        resize
+    );
 
     /* RAIN */
 
-    function createRain(){
+    const rain = [];
 
-        rainDrops.length = 0;
+    for(let i = 0; i < 700; i++){
 
-        for(let i = 0; i < 700; i++){
+        rain.push({
 
-            rainDrops.push({
+            x:
+                Math.random() * canvas.width,
 
-                x:
-                    Math.random() *
-                    canvas.width,
+            y:
+                Math.random() * canvas.height,
 
-                y:
-                    Math.random() *
-                    canvas.height,
+            len:
+                Math.random() * 20 + 5,
 
-                length:
-                    Math.random() * 20 + 5,
+            speed:
+                Math.random() * 7 + 3,
 
-                speed:
-                    Math.random() * 7 + 3,
+            opacity:
+                Math.random() * 0.5 + 0.1
 
-                opacity:
-                    Math.random() * 0.5 + 0.1
-
-            });
-
-        }
+        });
 
     }
 
     /* PARTICLES */
 
-    function createParticles(){
+    const particles = [];
 
-        particles.length = 0;
+    for(let i = 0; i < 140; i++){
 
-        for(let i = 0; i < 140; i++){
+        particles.push({
 
-            particles.push({
+            x:
+                Math.random() * canvas.width,
 
-                x:
-                    Math.random() *
-                    canvas.width,
+            y:
+                Math.random() * canvas.height,
 
-                y:
-                    Math.random() *
-                    canvas.height,
+            radius:
+                Math.random() * 3 + 1,
 
-                radius:
-                    Math.random() * 3 + 1,
+            vx:
+                (Math.random()-0.5)*0.8,
 
-                speedX:
-                    (Math.random()-0.5)*0.8,
+            vy:
+                (Math.random()-0.5)*0.8,
 
-                speedY:
-                    (Math.random()-0.5)*0.8,
+            opacity:
+                Math.random() * 0.5 + 0.2
 
-                opacity:
-                    Math.random() * 0.5 + 0.2
-
-            });
-
-        }
+        });
 
     }
 
-    setTimeout(() => {
-
-        createRain();
-
-        createParticles();
-
-    }, 1600);
-
-    /* APPLY SETTINGS */
-
-    function applySettings(){
-
-        const mode =
-            document.getElementById(
-                "effectMode"
-            );
-
-        if(mode){
-
-            effectMode = mode.value;
-
-        }
-
-    }
-
-    window.applySettings =
-        applySettings;
-
-    /* ANIMATION */
+    /* ANIMATE */
 
     function animate(){
 
@@ -450,7 +452,7 @@ if(canvas){
 
         if(effectMode === "rain"){
 
-            rainDrops.forEach(drop => {
+            for(let drop of rain){
 
                 ctx.beginPath();
 
@@ -461,7 +463,7 @@ if(canvas){
 
                 ctx.lineTo(
                     drop.x,
-                    drop.y + drop.length
+                    drop.y + drop.len
                 );
 
                 ctx.strokeStyle =
@@ -481,17 +483,15 @@ if(canvas){
 
                 }
 
-            });
+            }
 
         }
 
         /* PARTICLES */
 
-        else if(
-            effectMode === "particles"
-        ){
+        else if(effectMode === "particles"){
 
-            particles.forEach(p => {
+            for(let p of particles){
 
                 ctx.beginPath();
 
@@ -508,8 +508,8 @@ if(canvas){
 
                 ctx.fill();
 
-                p.x += p.speedX;
-                p.y += p.speedY;
+                p.x += p.vx;
+                p.y += p.vy;
 
                 if(p.x < 0)
                     p.x = canvas.width;
@@ -523,7 +523,7 @@ if(canvas){
                 if(p.y > canvas.height)
                     p.y = 0;
 
-            });
+            }
 
         }
 
@@ -535,45 +535,4 @@ if(canvas){
 
     animate();
 
-    window.addEventListener(
-        "resize",
-        () => {
-
-            resizeCanvas();
-
-            createRain();
-
-            createParticles();
-
-        }
-    );
-
 }
-
-/* =========================
-   ENTER KEY
-========================= */
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-if(searchInput){
-
-    searchInput.addEventListener(
-        "keypress",
-        function(e){
-
-            if(e.key === "Enter"){
-
-                searchWeb();
-
-            }
-
-        }
-    );
-
-}
-
-});
