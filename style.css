@@ -182,7 +182,8 @@ body{
 
 .searchBar button,
 #settingsButton,
-#closeSettings{
+#closeSettings,
+#applyCustomCloak{
 
     border:none;
 
@@ -202,7 +203,8 @@ body{
 
 .searchBar button:hover,
 #settingsButton:hover,
-#closeSettings:hover{
+#closeSettings:hover,
+#applyCustomCloak:hover{
 
     background:
         rgba(255,255,255,0.18);
@@ -255,8 +257,6 @@ body{
         transform 0.25s ease;
 }
 
-/* ACTIVE */
-
 #settingsPanel.active{
 
     opacity:1;
@@ -268,7 +268,7 @@ body{
         scale(1);
 }
 
-/* SETTINGS TOP */
+/* SETTINGS */
 
 .settingsTop{
 
@@ -280,11 +280,9 @@ body{
     margin-bottom:20px;
 }
 
-/* SETTINGS */
-
 .settingGroup{
 
-    margin-top:10px;
+    margin-top:18px;
 }
 
 .settingGroup label{
@@ -297,7 +295,8 @@ body{
         rgba(255,255,255,0.7);
 }
 
-.settingGroup select{
+.settingGroup select,
+.settingGroup input{
 
     width:100%;
 
@@ -312,6 +311,63 @@ body{
         rgba(255,255,255,0.08);
 
     color:white;
+}
+
+.settingGroup input::placeholder{
+
+    color:
+        rgba(255,255,255,0.45);
+}
+
+/* CLOAK BUTTONS */
+
+.cloakButtons{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.cloakPreset{
+
+    flex:1;
+
+    min-width:110px;
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.2s ease;
+}
+
+.cloakPreset:hover{
+
+    background:
+        rgba(255,255,255,0.16);
+
+    transform:
+        translateY(-2px);
+}
+
+/* CUSTOM BUTTON */
+
+#applyCustomCloak{
+
+    width:100%;
+
+    margin-top:18px;
 }
 
 /* MOBILE */
