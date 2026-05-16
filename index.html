@@ -23,30 +23,33 @@ rel="stylesheet"
 </head>
 <body>
 
-<!-- INTRO SCREEN -->
+<!-- INTRO -->
 
 <div id="introScreen">
-
-    <h1 id="introLogo">
-        l0w_v0!ume
-    </h1>
-
+    <h1 id="introLogo">l0w_v0!ume</h1>
 </div>
 
-<!-- CANVAS -->
+<!-- EFFECT CANVAS -->
 
 <canvas id="rain"></canvas>
 
-<!-- HOME BUTTON -->
+<!-- TASKBAR -->
 
-<button
-    id="homeBtn"
-    onclick="goHome()"
->
+<div id="taskbar">
 
-    Home
+    <button class="dock-app" onclick="openBrowserApp()">
+        🌐
+    </button>
 
-</button>
+    <button class="dock-app" onclick="goHome()">
+        🏠
+    </button>
+
+    <button class="dock-app" onclick="toggleSettings()">
+        ⚙️
+    </button>
+
+</div>
 
 <!-- HOMEPAGE -->
 
@@ -68,174 +71,4 @@ rel="stylesheet"
         </button>
 
     </div>
-
-    <button
-        class="settings-btn"
-        onclick="toggleSettings()"
-    >
-
-        Settings
-
-    </button>
-
-    <div class="bottom-text">
-        Minimal. Calm. Fast.
-    </div>
-
-</div>
-
-<!-- EMBEDDED BROWSER -->
-
-<iframe
-    id="browserFrame"
-    src=""
-></iframe>
-
-<!-- SETTINGS PANEL -->
-
-<div class="settings-panel" id="settingsPanel">
-
-    <div class="settings-header">
-
-        <h2>Settings</h2>
-
-        <button
-            class="close-btn"
-            onclick="toggleSettings()"
-        >
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <!-- TAB CLOAK -->
-
-    <div class="module">
-
-        <button
-            class="module-header"
-            onclick="toggleDropdown('cloakDropdown', this)"
-        >
-
-            <span>Tab Cloak</span>
-
-            <span class="dropdown-arrow">
-                ⌄
-            </span>
-
-        </button>
-
-        <div
-            class="module-dropdown"
-            id="cloakDropdown"
-        >
-
-            <div class="setting">
-
-                <label>Tab Title</label>
-
-                <input
-                    type="text"
-                    id="tabTitle"
-                    placeholder="Google Classroom"
-                >
-
-            </div>
-
-            <div class="setting">
-
-                <label>Tab Icon</label>
-
-                <select id="tabIcon">
-
-                    <option value="classroom">
-                        Google Classroom
-                    </option>
-
-                    <option value="google">
-                        Google
-                    </option>
-
-                    <option value="drive">
-                        Google Drive
-                    </option>
-
-                    <option value="docs">
-                        Google Docs
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- EFFECTS -->
-
-    <div class="module">
-
-        <button
-            class="module-header"
-            onclick="toggleDropdown('effectsDropdown', this)"
-        >
-
-            <span>Background Effects</span>
-
-            <span class="dropdown-arrow">
-                ⌄
-            </span>
-
-        </button>
-
-        <div
-            class="module-dropdown"
-            id="effectsDropdown"
-        >
-
-            <div class="setting">
-
-                <label>Effects Mode</label>
-
-                <select id="effectMode">
-
-                    <option value="rain">
-                        Rain
-                    </option>
-
-                    <option value="particles">
-                        Particles
-                    </option>
-
-                    <option value="off">
-                        Off
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- APPLY -->
-
-    <button
-        class="apply-btn"
-        onclick="applySettings()"
-    >
-
-        Apply Settings
-
-    </button>
-
-</div>
-
-<script src="./script.js"></script>
-
-</body>
 </html>
