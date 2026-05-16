@@ -27,15 +27,13 @@ function initIntro(){
 
         intro.style.opacity = "0";
 
-        intro.style.pointerEvents = "none";
-
         setTimeout(() => {
 
-            intro.style.display = "none";
+            intro.remove();
 
         }, 1200);
 
-    }, 2600);
+    }, 2400);
 
 }
 
