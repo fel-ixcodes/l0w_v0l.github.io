@@ -7,13 +7,7 @@
 
 <title>l0w_v0!ume</title>
 
-<link
-id="favicon"
-rel="icon"
-href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50a.png"
->
-
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="style.css">
 
 <link
 href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
@@ -23,58 +17,91 @@ rel="stylesheet"
 </head>
 <body>
 
-<!-- INTRO SCREEN -->
+<!-- INTRO -->
 
-<div id="introScreen">
+<div id="intro">
 
-    <h1 id="introLogo">
+    <h1 id="introText">
         l0w_v0!ume
     </h1>
 
 </div>
-    
-<!-- EFFECT CANVAS -->
 
-<canvas id="rain"></canvas>
+<!-- EFFECTS -->
 
-<!-- TASKBAR -->
+<canvas id="bgCanvas"></canvas>
 
-<div id="taskbar">
+<!-- MAIN -->
 
-    <button class="dock-app" onclick="openBrowserApp()">
-        🌐
-    </button>
+<div class="main">
 
-    <button class="dock-app" onclick="goHome()">
-        🏠
-    </button>
+    <h1 class="logo">
+        l0w_v0!ume
+    </h1>
 
-    <button class="dock-app" onclick="toggleSettings()">
-        ⚙️
-    </button>
-
-</div>
-
-<!-- HOMEPAGE -->
-
-<div class="container" id="homepage">
-
-    <h1 class="logo">l0w_v0!ume</h1>
-
-    <div class="search-box">
+    <div class="searchBar">
 
         <input
             type="text"
             id="searchInput"
             placeholder="Search..."
-            autocomplete="off"
         >
 
-        <button onclick="searchWeb()">
+        <button id="searchBtn">
             Search
         </button>
 
     </div>
 
-    <button
+    <button id="settingsButton">
+        Settings
+    </button>
+
+</div>
+
+<!-- SETTINGS -->
+
+<div id="settingsPanel">
+
+    <div class="settingsTop">
+
+        <h2>
+            Settings
+        </h2>
+
+        <button id="closeSettings">
+            ✕
+        </button>
+
+    </div>
+
+    <div class="settingGroup">
+
+        <label>
+            Background Effect
+        </label>
+
+        <select id="effectSelect">
+
+            <option value="rain">
+                Rain
+            </option>
+
+            <option value="particles">
+                Particles
+            </option>
+
+            <option value="off">
+                Off
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
 </html>
